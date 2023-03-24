@@ -1,4 +1,4 @@
-FROM node:16 as builder
+FROM node:latest as builder
 RUN npm i -g @ionic/cli
 RUN npm i -g @angular/cli
 WORKDIR /usr/src/app
@@ -7,7 +7,7 @@ RUN npm install
 COPY front .
 RUN npm run build_ionic
 
-FROM node:16
+FROM node:latest
 WORKDIR /usr/src/app
 COPY server/package*.json ./
 RUN npm ci --only=production

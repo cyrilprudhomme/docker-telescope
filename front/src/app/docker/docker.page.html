@@ -19,7 +19,7 @@
     <ion-item *ngFor="let container of socketIoService.containers">
       <ion-label *ngFor="let name of container.Names">{{tools.cleanName(name)}}</ion-label>
       <ion-note slot="end">{{container.State}} {{container.Status}}</ion-note>
-      <ion-button slot="end" (click)="setOpenContainerDetails(true); this.containerSelected = container">
+      <ion-button (click)="setOpenContainerDetails(true); this.containerSelected = container" slot="end">
         <ion-icon name="information-circle-outline" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-item>

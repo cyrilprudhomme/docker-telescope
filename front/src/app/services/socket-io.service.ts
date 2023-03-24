@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
-import {io} from "socket.io-client";
 import {ContainerInfo, ImageInfo} from "./model";
+import {environment} from "../../environments/environment";
+import {io} from "socket.io-client";
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,13 @@ export class SocketIoService {
   images: ImageInfo[] = []
   volumes = []
   networks = []
-  socket = io("http://ucf-ljenias101.siu.central:3000");
+  socket = io()
+
 
   constructor() {
+    if (!environment.production) {
+      this.socket = io("http://ucf-ljenias101.siu.central:3000")
+    }
     this.socket.on("containersList", (arg: ContainerInfo[]) => {
       this.containers = arg
     });

@@ -3,7 +3,8 @@ import {SocketIoService} from "../services/socket-io.service";
 import {ToolsService} from "../services/tools.service";
 import {ContainerInfo, ImageInfo} from "../services/model";
 import {IonModal} from "@ionic/angular";
-import { OverlayEventDetail } from '@ionic/core/components';
+import {OverlayEventDetail} from '@ionic/core/components';
+
 @Component({
   selector: 'app-docker',
   templateUrl: './docker.page.html',
@@ -23,11 +24,13 @@ export class DockerPage implements OnInit {
 
   ngOnInit(): void {
   }
+
   cancel() {
     this.modal.dismiss(null, 'cancel');
   }
+
   open() {
-    this.modal.isOpen=true
+    this.modal.isOpen = true
   }
 
   confirm() {
@@ -43,11 +46,11 @@ export class DockerPage implements OnInit {
   }
 
   setOpenContainerDetails(isOpen: boolean) {
-      this.isModalContainersDetailsOpen = isOpen;
+    this.isModalContainersDetailsOpen = isOpen;
   }
 
   setOpenImageDetails(isOpen: boolean) {
-      this.isModalImageDetailsOpen = isOpen;
+    this.isModalImageDetailsOpen = isOpen;
   }
 
 }
