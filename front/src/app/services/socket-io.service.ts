@@ -16,7 +16,7 @@ export class SocketIoService {
 
   constructor() {
     if (!environment.production) {
-      this.socket = io("http://ucf-ljenias101.siu.central:3000")
+      this.socket = io("http://localhost:3000")
     }
     this.socket.on("containersList", (arg: ContainerInfo[]) => {
       this.containers = arg
