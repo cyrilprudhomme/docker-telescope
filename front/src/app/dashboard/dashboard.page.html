@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Containers
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Containers</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-no-margin ion-text-center" size="12" size-lg="4" size-md="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>TOTAL CONTAINEURS</ion-card-title>
+            <ion-card-subtitle>Containeurs</ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content>
+            <h1>{{this.socketIoService.containers.length}}/{{this.socketIoService.containers.length}}</h1>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col class="ion-no-margin ion-text-center" size="12" size-lg="4" size-md="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>TOTAL IMAGES</ion-card-title>
+            <ion-card-subtitle>Images</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <h1>{{this.socketIoService.images.length}}/{{this.socketIoService.images.length}}</h1>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col class="ion-no-margin ion-text-center" size="12" size-lg="4" size-md="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>TOTAL VOLUMES</ion-card-title>
+            <ion-card-subtitle>Volumes</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <h1>{{this.socketIoService.volumes.length}}/{{this.socketIoService.volumes.length}}</h1>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col class="ion-no-margin ion-text-center" size="12" size-lg="4" size-md="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>TOTAL NETWORKS</ion-card-title>
+            <ion-card-subtitle>Network</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <h1>{{this.socketIoService.networks.length}}/{{this.socketIoService.networks.length}}</h1>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
