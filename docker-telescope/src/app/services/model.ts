@@ -69,57 +69,37 @@ export interface Config {
 }
 
 export interface VolumesInfos {
-  "Name": string,
-  "Driver": string,
-  "Mountpoint": string,
-  "CreatedAt": string,
-  "Status":
-    {
 
-      "hello": string,
-
-    },
-  "Labels":
-    {
-
-      "com.example.some-label": string,
-      "com.example.some-other-label": string,
-
-    },
-  "Scope": string,
-  "ClusterVolume":
-    {
-
-      "ID": string,
-      "Version":
-
-        {},
-      "CreatedAt": string,
-      "UpdatedAt": string,
-      "Spec":
-        {},
-      "Info":
-        {},
-      "PublishStatus":
-
-        []
-
-    },
-  "Options":
-    {
-
-      "device": string,
-      "o": string,
-      "type": string,
-
-    },
-  "UsageData":
-    {
-
-      "Size": number,
-      "RefCount": number,
-
-    }
+  Name: string,
+  Driver: string,
+  Mountpoint: string,
+  CreatedAt: string,
+  Status: {
+    "hello": string,
+  },
+  Labels: {
+    "com.example.some-label": string,
+    "com.example.some-other-label": string,
+  },
+  Scope: string,
+  ClusterVolume: {
+    ID: string,
+    Version: Array<{}>,
+    CreatedAt: string,
+    UpdatedAt: string,
+    Spec: Array<{}>,
+    Info: Array<{}>,
+    PublishStatus: Array<{}>,
+  },
+  Options: {
+    device: string,
+    o: string,
+    type: string,
+  },
+  UsageData: {
+    Size: number,
+    RefCount: number,
+  }
 }
 
 export interface NetworksInfos {

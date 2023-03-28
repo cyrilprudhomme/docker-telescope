@@ -16,18 +16,18 @@ export class DockerIOService {
 
   constructor() {
     if (!environment.production) {
-      this.socket = io("http://ucf-lnexias101.siu.central:8084")
+      this.socket = io("http://ucf-ljenias101.siu.central:8084")
     }
     this.socket.on("containersList", (arg: ContainerInfo[]) => {
       this.containers = arg
     });
-    this.socket.on("imagesList", (arg) => {
+    this.socket.on("imagesList", (arg: ImageInfo[]) => {
       this.images = arg
     });
-    this.socket.on("volumesList", (arg) => {
-      this.volumes = arg
+    this.socket.on("volumesList", (arg: { Volumes: VolumesInfos[] }) => {
+      this.volumes = arg.Volumes
     });
-    this.socket.on("networksList", (arg) => {
+    this.socket.on("networksList", (arg: NetworksInfos[]) => {
       this.networks = arg
     });
     this.socket.emit("metrics:list");
