@@ -1,0 +1,7 @@
+{
+  "name": "Docker-Telescope",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
