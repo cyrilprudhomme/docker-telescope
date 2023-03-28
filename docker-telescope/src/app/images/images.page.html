@@ -10,7 +10,10 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Images</ion-title>
+      <ion-title size="large">
+        <ion-icon aria-hidden="true" ios='document-text-outline' md="document-text-sharp"></ion-icon>
+        Images
+      </ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-list *ngIf="dockerIOService.images.length>0; else elseBlock">
@@ -24,7 +27,9 @@
   </ion-list>
   <ng-template #elseBlock>
     <div id="container">
-      <strong class="capitalize">Aucun images à afficher.</strong>
+      <strong class="capitalize">
+        <ion-icon aria-hidden="true" ios='document-text-outline' md="document-text-sharp"></ion-icon>
+        Aucun images à afficher.</strong>
       <p>En cas de problèmes d’affichage, Vérifier que le socket Docker est bien paramétré et que des containers sont en
         fonctionnement.</p>
     </div>

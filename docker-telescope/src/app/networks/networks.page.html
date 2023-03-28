@@ -10,7 +10,10 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Networks</ion-title>
+      <ion-title size="large">
+        <ion-icon aria-hidden="true" ios='share-social-outline' md="share-social-sharp"></ion-icon>
+        Networks
+      </ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-list *ngIf="dockerIOService.networks.length>0; else elseBlock">
@@ -24,7 +27,9 @@
   </ion-list>
   <ng-template #elseBlock>
     <div id="container">
-      <strong class="capitalize">Aucun networks à afficher.</strong>
+      <strong class="capitalize">
+        <ion-icon aria-hidden="true" ios='share-social-outline' md="share-social-sharp"></ion-icon>
+        Aucun networks à afficher.</strong>
       <p>En cas de problèmes d’affichage, Vérifier que le socket Docker est bien paramétré et que des containers sont en
         fonctionnement.</p>
     </div>
