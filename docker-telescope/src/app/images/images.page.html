@@ -27,9 +27,11 @@
   </ion-list>
   <ng-template #elseBlock>
     <div id="container">
-      <strong class="capitalize">
-        <ion-icon aria-hidden="true" ios='document-text-outline' md="document-text-sharp"></ion-icon>
-        Aucun images à afficher.</strong>
+      <ion-text color="primary">
+        <strong class="capitalize">
+          <ion-icon aria-hidden="true" ios='document-text-outline' md="document-text-sharp"></ion-icon>
+          Aucun images à afficher.</strong>
+      </ion-text>
       <p>En cas de problèmes d’affichage, Vérifier que le socket Docker est bien paramétré et que des containers sont en
         fonctionnement.</p>
     </div>
@@ -38,8 +40,12 @@
     <ng-template>
       <ion-header>
         <ion-toolbar>
-          <ion-title *ngIf="itemSelected.RepoTags">{{itemSelected.RepoTags[0]}}</ion-title>
-          <ion-title *ngIf="!itemSelected.RepoTags">{{itemSelected.Id}}</ion-title>
+          <ion-title *ngIf="itemSelected.RepoTags">
+            <ion-text color="primary">{{itemSelected.RepoTags[0]}}</ion-text>
+          </ion-title>
+          <ion-title *ngIf="!itemSelected.RepoTags">
+            <ion-text color="primary">{{itemSelected.Id}}</ion-text>
+          </ion-title>
           <ion-buttons slot="end">
             <ion-button (click)="setOpenDetails(false)">Close</ion-button>
           </ion-buttons>
@@ -47,23 +53,66 @@
       </ion-header>
       <ion-content class="ion-padding">
         <ul>
-          <li>Id: {{itemSelected.Id}}</li>
-          <li>ParentId: {{itemSelected.ParentId}}</li>
-          <li>RepoTags:
+          <li>
+            <ion-text color="primary">
+              <strong>Id : </strong>
+            </ion-text>
+            {{itemSelected.Id}}
+          </li>
+          <li>
+            <ion-text color="primary">
+              <strong>ParentId : </strong>
+            </ion-text>
+            {{itemSelected.ParentId}}
+          </li>
+          <li>
+            <ion-text color="primary">
+              <strong>RepoTags : </strong>
+            </ion-text>
             <ul *ngFor="let RepoTag of itemSelected.RepoTags">
-              <li>{{RepoTag}}</li>
+              <li>{{RepoTag}}
+              </li>
             </ul>
           </li>
-          <li>RepoDigest:
+          <li>
+            <ion-text color="primary">
+              <strong>RepoDigest : </strong>
+            </ion-text>
             <ul *ngFor="let RepoDigest of itemSelected.RepoDigests">
-              <li>{{RepoDigest}}</li>
+              <li>{{RepoDigest}}
+              </li>
             </ul>
           </li>
-          <li>Created: {{itemSelected.Created}}</li>
-          <li>Size: {{itemSelected.Size}}</li>
-          <li>VirtualSize: {{itemSelected.VirtualSize}}</li>
-          <li>SharedSize: {{itemSelected.SharedSize}}</li>
-          <li>Containers: {{itemSelected.Containers}}</li>
+          <li>
+            <ion-text color="primary">
+              <strong>Created : </strong>
+            </ion-text>
+            {{itemSelected.Created}}
+          </li>
+          <li>
+            <ion-text color="primary">
+              <strong>Size : </strong>
+            </ion-text>
+            {{itemSelected.Size}}
+          </li>
+          <li>
+            <ion-text color="primary">
+              <strong>VirtualSize : </strong>
+            </ion-text>
+            {{itemSelected.VirtualSize}}
+          </li>
+          <li>
+            <ion-text color="primary">
+              <strong>SharedSize : </strong>
+            </ion-text>
+            {{itemSelected.SharedSize}}
+          </li>
+          <li>
+            <ion-text color="primary">
+              <strong>Containers : </strong>
+            </ion-text>
+            {{itemSelected.Containers}}
+          </li>
         </ul>
       </ion-content>
     </ng-template>

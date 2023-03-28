@@ -3,7 +3,10 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header>Docker-Telescope</ion-list-header>
+          <ion-list-header>
+            <ion-icon aria-hidden="true" ios='logo-docker' md="logo-docker"></ion-icon>
+            Docker-Telescope
+          </ion-list-header>
           <ion-note>Viewer</ion-note>
 
           <ion-menu-toggle *ngFor="let p of appPages; let i = index" auto-hide="false">

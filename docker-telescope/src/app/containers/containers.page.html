@@ -19,6 +19,7 @@
   <ion-list *ngIf="dockerIOService.containers.length>0; else elseBlock">
     <ion-item *ngFor="let container of dockerIOService.containers">
       <ion-label *ngFor="let name of container.Names">{{tools.cleanName(name)}}</ion-label>
+
       <ion-note slot="end">{{container.State}} {{container.Status}}</ion-note>
       <ion-button (click)="setOpenDetails(true); this.itemSelected = container" slot="end">
         <ion-icon name="information-circle-outline" slot="icon-only"></ion-icon>
@@ -27,9 +28,11 @@
   </ion-list>
   <ng-template #elseBlock>
     <div id="container">
-      <strong class="capitalize">
-        <ion-icon aria-hidden="true" ios='cube-outline' md="cube-sharp"></ion-icon>
-        Aucun containeurs à afficher.</strong>
+      <ion-text color="primary">
+        <strong class="capitalize">
+          <ion-icon aria-hidden="true" ios='cube-outline' md="cube-sharp"></ion-icon>
+          Aucun containeurs à afficher.</strong>
+      </ion-text>
       <p>En cas de problèmes d’affichage, Vérifier que le socket Docker est bien paramétré et que des containers sont en
         fonctionnement.</p>
     </div>
@@ -38,7 +41,9 @@
     <ng-template>
       <ion-header>
         <ion-toolbar>
-          <ion-title *ngFor="let name of itemSelected.Names">{{tools.cleanName(name)}}</ion-title>
+          <ion-title *ngFor="let name of itemSelected.Names">
+            <ion-text color="primary">{{tools.cleanName(name)}}</ion-text>
+          </ion-title>
           <ion-buttons slot="end">
             <ion-button (click)="setOpenDetails(false)">Close</ion-button>
           </ion-buttons>
@@ -46,43 +51,167 @@
       </ion-header>
       <ion-content class="ion-padding">
         <ul>
-          <li>Id: {{itemSelected.Id}}</li>
-          <li *ngFor="let name of itemSelected.Names">Name: {{name}}</li>
-          <li>Image: {{itemSelected.Image}}</li>
-          <li>ImageID: {{itemSelected.ImageID}}</li>
-          <li>Command: {{itemSelected.Command}}</li>
-          <li>Created: {{itemSelected.Created}}</li>
-          <li>Ports:
+          <li>
+            <ion-text color="primary">
+              <strong>Id : </strong>
+            </ion-text>
+            {{itemSelected.Id}}
+          </li>
+
+          <li *ngFor="let name of itemSelected.Names">
+            <ion-text color="primary">
+              <strong>Name : </strong>
+            </ion-text>
+            {{name}}
+          </li>
+          <li>
+            <ion-text color="primary">
+              <strong>Image : </strong>
+            </ion-text>
+            {{itemSelected.Image}}
+          </li>
+          <li>
+            <ion-text color="primary">
+              <strong>ImageID : </strong>
+            </ion-text>
+            {{itemSelected.ImageID}}
+          </li>
+          <li>
+            <ion-text color="primary">
+              <strong>Command : </strong>
+            </ion-text>
+            {{itemSelected.Command}}
+          </li>
+          <li>
+            <ion-text color="primary">
+              <strong>Created : </strong>
+            </ion-text>
+            {{itemSelected.Created}}
+          </li>
+          <li>
+            <ion-text color="primary">
+              <strong>Ports :</strong>
+            </ion-text>
+
             <ul *ngFor="let port of itemSelected.Ports; index as i">
-              <li>IP: {{port.IP}}</li>
-              <li>PrivatePort: {{port.PrivatePort}}</li>
-              <li>PublicPort: {{port.PublicPort}}</li>
-              <li>Type: {{port.Type}}</li>
+              <li>
+                <ion-text color="primary">
+                  <strong>IP : </strong>
+                </ion-text>
+                {{port.IP}}
+              </li>
+              <li>
+                <ion-text color="primary">
+                  <strong>PrivatePort : </strong>
+                </ion-text>
+                {{port.PrivatePort}}
+              </li>
+              <li>
+                <ion-text color="primary">
+                  <strong>PublicPort : </strong>
+                </ion-text>
+                {{port.PublicPort}}
+              </li>
+              <li>
+                <ion-text color="primary">
+                  <strong>Type : </strong>
+                </ion-text>
+                {{port.Type}}
+              </li>
               <br *ngIf="i<itemSelected.Ports.length">
             </ul>
           </li>
-          <li>State: {{itemSelected.State}}</li>
-          <li>Status: {{itemSelected.Status}}</li>
-          <li>HostConfig:
+          <li>
+            <ion-text color="primary">
+              <strong>State : </strong>
+            </ion-text>
+            {{itemSelected.State}}
+          </li>
+          <li>
+            <ion-text color="primary">
+              <strong>Status : </strong>
+            </ion-text>
+            {{itemSelected.Status}}</li>
+          <li>
+            <ion-text color="primary">
+              <strong>HostConfig :</strong>
+            </ion-text>
+
             <ul>
-              <li>NetworkMode: {{itemSelected.HostConfig.NetworkMode}}</li>
+              <li>
+                <ion-text color="primary">
+                  <strong>NetworkMode : </strong>
+                </ion-text>
+                {{itemSelected.HostConfig.NetworkMode}}</li>
             </ul>
           </li>
-          <li>NetworkSettings:
+          <li>
+            <ion-text color="primary">
+              <strong>NetworkSettings :</strong>
+            </ion-text>
+
             <ul>
-              <li>Networks: {{itemSelected.NetworkSettings.Networks}}</li>
+              <li>
+                <ion-text color="primary">
+                  <strong>Networks : </strong>
+                </ion-text>
+                {{itemSelected.NetworkSettings.Networks}}</li>
             </ul>
           </li>
-          <li>Mount:
+          <li>
+            <ion-text color="primary">
+              <strong>Mount :</strong>
+            </ion-text>
+
             <ul *ngFor="let mount of itemSelected.Mounts; index as i">
-              <li>Name: {{mount.Name}}</li>
-              <li>Type: {{mount.Type}}</li>
-              <li>Source: {{mount.Source}}</li>
-              <li>Destination: {{mount.Destination}}</li>
-              <li>Driver: {{mount.Driver}}</li>
-              <li>Mode: {{mount.Mode}}</li>
-              <li>RW: {{mount.RW}}</li>
-              <li>Propagation: {{mount.Propagation}}</li>
+              <li>
+                <ion-text color="primary">
+                  <strong>Name : </strong>
+                </ion-text>
+                {{mount.Name}}
+              </li>
+              <li>
+                <ion-text color="primary">
+                  <strong>Type : </strong>
+                </ion-text>
+                {{mount.Type}}
+              </li>
+              <li>
+                <ion-text color="primary">
+                  <strong>Source : </strong>
+                </ion-text>
+                {{mount.Source}}
+              </li>
+              <li>
+                <ion-text color="primary">
+                  <strong>Destination : </strong>
+                </ion-text>
+                {{mount.Destination}}
+              </li>
+              <li>
+                <ion-text color="primary">
+                  <strong>Driver : </strong>
+                </ion-text>
+                {{mount.Driver}}
+              </li>
+              <li>
+                <ion-text color="primary">
+                  <strong>Mode : </strong>
+                </ion-text>
+                {{mount.Mode}}
+              </li>
+              <li>
+                <ion-text color="primary">
+                  <strong>RW : </strong>
+                </ion-text>
+                {{mount.RW}}
+              </li>
+              <li>
+                <ion-text color="primary">
+                  <strong>Propagation : </strong>
+                </ion-text>
+                {{mount.Propagation}}
+              </li>
               <br *ngIf="i<itemSelected.Mounts.length">
             </ul>
           </li>

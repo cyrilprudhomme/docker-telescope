@@ -27,9 +27,11 @@
   </ion-list>
   <ng-template #elseBlock>
     <div id="container">
-      <strong class="capitalize">
-        <ion-icon aria-hidden="true" ios='share-social-outline' md="share-social-sharp"></ion-icon>
-        Aucun networks à afficher.</strong>
+      <ion-text color="primary">
+        <strong class="capitalize">
+          <ion-icon aria-hidden="true" ios='share-social-outline' md="share-social-sharp"></ion-icon>
+          Aucun networks à afficher.</strong>
+      </ion-text>
       <p>En cas de problèmes d’affichage, Vérifier que le socket Docker est bien paramétré et que des containers sont en
         fonctionnement.</p>
     </div>
@@ -38,7 +40,9 @@
     <ng-template>
       <ion-header>
         <ion-toolbar>
-          <ion-title>{{itemSelected.Name}}</ion-title>
+          <ion-title>
+            <ion-text color="primary">{{itemSelected.Name}}</ion-text>
+          </ion-title>
           <ion-buttons slot="end">
             <ion-button (click)="setOpenDetails(false)">Close</ion-button>
           </ion-buttons>
@@ -46,29 +50,84 @@
       </ion-header>
       <ion-content class="ion-padding">
         <ul>
-          <li>Id: {{itemSelected.Id}}</li>
-          <li>Name: {{itemSelected.Name}}</li>
-          <li>Created: {{itemSelected.Created}}</li>
-          <li>Scope: {{itemSelected.Scope}}</li>
-          <li>Driver: {{itemSelected.Driver}}</li>
-          <li>EnableIPv6: {{itemSelected.EnableIPv6}}</li>
-          <li>IPAM: {{itemSelected.IPAM}}</li>
-          <li>Internal: {{itemSelected.Internal}}</li>
-          <li>Attachable: {{itemSelected.Attachable}}</li>
-          <li>Ingress: {{itemSelected.Ingress}}</li>
-          <li>Containers: {{itemSelected.Containers}}</li>
-          <li>Options: {{itemSelected.Options}}</li>
-          <li>Labels: {{itemSelected.Labels}}</li>
-          <!--          <li>Ports:-->
-          <!--            <ul *ngFor="let port of itemSelected.Ports; index as i">-->
-          <!--              <li>IP: {{port.IP}}</li>-->
-          <!--              <li>PrivatePort: {{port.PrivatePort}}</li>-->
-          <!--              <li>PublicPort: {{port.PublicPort}}</li>-->
-          <!--              <li>Type: {{port.Type}}</li>-->
-          <!--              <br *ngIf="i<itemSelected.Ports.length">-->
-          <!--            </ul>-->
-          <!--          </li>-->
-
+          <li>
+            <ion-text color="primary">
+              <strong>Id : </strong>
+            </ion-text>
+            {{itemSelected.Id}}
+          </li>
+          <li>
+            <ion-text color="primary">
+              <strong>Name : </strong>
+            </ion-text>
+            {{itemSelected.Name}}
+          </li>
+          <li>
+            <ion-text color="primary">
+              <strong>Created : </strong>
+            </ion-text>
+            {{itemSelected.Created}}
+          </li>
+          <li>
+            <ion-text color="primary">
+              <strong>Scope : </strong>
+            </ion-text>
+            {{itemSelected.Scope}}
+          </li>
+          <li>
+            <ion-text color="primary">
+              <strong>Driver : </strong>
+            </ion-text>
+            {{itemSelected.Driver}}
+          </li>
+          <li>
+            <ion-text color="primary">
+              <strong>EnableIPv6 : </strong>
+            </ion-text>
+            {{itemSelected.EnableIPv6}}
+          </li>
+          <li>
+            <ion-text color="primary">
+              <strong>IPAM : </strong>
+            </ion-text>
+            {{itemSelected.IPAM}}
+          </li>
+          <li>
+            <ion-text color="primary">
+              <strong>Internal : </strong>
+            </ion-text>
+            {{itemSelected.Internal}}
+          </li>
+          <li>
+            <ion-text color="primary">
+              <strong>Attachable : </strong>
+            </ion-text>
+            {{itemSelected.Attachable}}
+          </li>
+          <li>
+            <ion-text color="primary">
+              <strong>Ingress : </strong>
+            </ion-text>
+            {{itemSelected.Ingress}}
+          </li>
+          <li>
+            <ion-text color="primary">
+              <strong>Containers : </strong>
+            </ion-text>
+            {{itemSelected.Containers}}
+          </li>
+          <li>
+            <ion-text color="primary">
+              <strong>Options : </strong>
+            </ion-text>
+            {{itemSelected.Options}}
+          </li>
+          <li>
+            <ion-text color="primary">
+              <strong>Labels : </strong>
+            </ion-text>
+            {{itemSelected.Labels}}
+          </li>
         </ul>
       </ion-content>
     </ng-template>
