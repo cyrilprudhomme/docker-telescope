@@ -13,10 +13,10 @@ export class AppComponent {
     {title: 'Volumes', url: '/volumes', icon: 'server'},
     {title: 'Networks', url: '/networks', icon: 'share-social'},
 
-    // {title: 'Construct', url: 'construct', icon: 'construct'},
+    // {title: 'Administration', url: 'administration', icon: 'construct'},
   ];
   // public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  public labels = [];
+  public labels = [{title: 'Administration', url: 'administration', icon: 'construct'},];
 
   constructor() {
   }
