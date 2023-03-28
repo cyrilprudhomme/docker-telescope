@@ -14,22 +14,27 @@
   </ion-header>
   <ion-grid>
     <ion-row>
-      <ion-col class="ion-no-margin ion-text-center" size="12" size-lg="4" size-md="6">
+      <ion-col class="ion-no-margin ion-text-center" size="12" size-lg="3" size-md="6">
         <ion-card>
           <ion-card-header>
-            <ion-card-title>TOTAL CONTAINEURS</ion-card-title>
+            <ion-card-title>
+              <ion-icon aria-hidden="true" ios='cube-outline' md="cube-sharp"></ion-icon>
+              Containeurs
+            </ion-card-title>
             <ion-card-subtitle>Containeurs</ion-card-subtitle>
           </ion-card-header>
-
           <ion-card-content>
             <h1>{{this.dockerIOService.containers.length}}/{{this.dockerIOService.containers.length}}</h1>
           </ion-card-content>
         </ion-card>
       </ion-col>
-      <ion-col class="ion-no-margin ion-text-center" size="12" size-lg="4" size-md="6">
+      <ion-col class="ion-no-margin ion-text-center" size="12" size-lg="3" size-md="6">
         <ion-card>
           <ion-card-header>
-            <ion-card-title>TOTAL IMAGES</ion-card-title>
+            <ion-card-title>
+              <ion-icon aria-hidden="true" ios='document-text-outline' md="document-text-sharp"></ion-icon>
+              Images
+            </ion-card-title>
             <ion-card-subtitle>Images</ion-card-subtitle>
           </ion-card-header>
           <ion-card-content>
@@ -37,10 +42,13 @@
           </ion-card-content>
         </ion-card>
       </ion-col>
-      <ion-col class="ion-no-margin ion-text-center" size="12" size-lg="4" size-md="6">
+      <ion-col class="ion-no-margin ion-text-center" size="12" size-lg="3" size-md="6">
         <ion-card>
           <ion-card-header>
-            <ion-card-title>TOTAL VOLUMES</ion-card-title>
+            <ion-card-title>
+              <ion-icon aria-hidden="true" ios='server-outline' md="server-sharp"></ion-icon>
+              Volumes
+            </ion-card-title>
             <ion-card-subtitle>Volumes</ion-card-subtitle>
           </ion-card-header>
           <ion-card-content>
@@ -48,10 +56,13 @@
           </ion-card-content>
         </ion-card>
       </ion-col>
-      <ion-col class="ion-no-margin ion-text-center" size="12" size-lg="4" size-md="6">
+      <ion-col class="ion-no-margin ion-text-center" size="12" size-lg="3" size-md="6">
         <ion-card>
           <ion-card-header>
-            <ion-card-title>TOTAL NETWORKS</ion-card-title>
+            <ion-card-title>
+              <ion-icon aria-hidden="true" ios='share-social-outline' md="share-social-sharp"></ion-icon>
+              Network
+            </ion-card-title>
             <ion-card-subtitle>Network</ion-card-subtitle>
           </ion-card-header>
           <ion-card-content>
