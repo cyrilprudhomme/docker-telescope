@@ -12,11 +12,10 @@ export class AppComponent {
     {title: 'Images', url: '/images', icon: 'document-text'},
     {title: 'Volumes', url: '/volumes', icon: 'server'},
     {title: 'Networks', url: '/networks', icon: 'share-social'},
-
-    // {title: 'Administration', url: 'administration', icon: 'construct'},
   ];
-  // public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  public labels = [{title: 'Administration', url: 'administration', icon: 'construct'},];
+  public labels = [
+    {title: 'Administration', url: 'administration', icon: 'construct'},
+  ];
 
   constructor() {
   }
