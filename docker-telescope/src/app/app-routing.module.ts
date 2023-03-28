@@ -16,11 +16,6 @@ const routes: Routes = [
     loadChildren: () => import('./containers/containers.module').then(m => m.ContainersPageModule)
   },
   {
-    path: '',
-    redirectTo: 'containers',
-    pathMatch: 'full'
-  },
-  {
     path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardPageModule)
   },
@@ -35,6 +30,10 @@ const routes: Routes = [
   {
     path: 'networks',
     loadChildren: () => import('./networks/networks.module').then(m => m.NetworksPageModule)
+  },
+  {
+    path: 'administration',
+    loadChildren: () => import('./administration/administration.module').then(m => m.AdministrationPageModule)
   }
 
 

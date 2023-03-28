@@ -1,8 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Containers
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Containers</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,7 +13,7 @@
       <ion-title size="large">Containers</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-list *ngIf="dockerIOService.containers.length>0">
+  <ion-list *ngIf="dockerIOService.containers.length>0; else elseBlock">
     <ion-item *ngFor="let container of dockerIOService.containers">
       <ion-label *ngFor="let name of container.Names">{{tools.cleanName(name)}}</ion-label>
       <ion-note slot="end">{{container.State}} {{container.Status}}</ion-note>
@@ -21,7 +22,13 @@
       </ion-button>
     </ion-item>
   </ion-list>
-
+  <ng-template #elseBlock>
+    <div id="container">
+      <strong class="capitalize">Aucun containeurs à afficher.</strong>
+      <p>En cas de problèmes d’affichage, Vérifier que le socket Docker est bien paramétré et que des containers sont en
+        fonctionnement.</p>
+    </div>
+  </ng-template>
   <ion-modal [isOpen]="isModalDetailsOpen">
     <ng-template>
       <ion-header>

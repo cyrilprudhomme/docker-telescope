@@ -1,8 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Volumes
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title> Volumes</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,7 +13,7 @@
       <ion-title size="large">Volumes</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-list *ngIf="dockerIOService.volumes.length>0">
+  <ion-list *ngIf="dockerIOService.volumes.length>0; else elseBlock">
     <ion-item *ngFor="let volume of dockerIOService.volumes">
       <ion-label>{{volume.Name}}</ion-label>
       <ion-note slot="end">{{volume.Scope}} {{volume.Driver}}</ion-note>
@@ -21,7 +22,13 @@
       </ion-button>
     </ion-item>
   </ion-list>
-
+  <ng-template #elseBlock>
+    <div id="container">
+      <strong class="capitalize">Aucun volumes à afficher.</strong>
+      <p>En cas de problèmes d’affichage, Vérifier que le socket Docker est bien paramétré et que des volumes sont en
+        fonctionnement.</p>
+    </div>
+  </ng-template>
   <ion-modal [isOpen]="isModalDetailsOpen">
     <ng-template>
       <ion-header>

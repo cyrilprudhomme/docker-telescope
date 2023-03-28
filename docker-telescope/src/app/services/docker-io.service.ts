@@ -13,7 +13,6 @@ export class DockerIOService {
   networks: NetworksInfos[] = []
   socket = io()
 
-
   constructor() {
     if (!environment.production) {
       this.socket = io("http://ucf-ljenias101.siu.central:8084")
