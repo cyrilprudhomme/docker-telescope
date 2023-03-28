@@ -12,7 +12,7 @@
       <ion-title size="large">Networks</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-list>
+  <ion-list *ngIf="dockerIOService.networks.length>0">
     <ion-item *ngFor="let network of dockerIOService.networks">
       <ion-label>{{network.Name}}</ion-label>
       <ion-note slot="end">{{network.Scope}} {{network.Driver}}</ion-note>

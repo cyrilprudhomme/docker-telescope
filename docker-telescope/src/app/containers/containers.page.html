@@ -12,7 +12,7 @@
       <ion-title size="large">Containers</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-list>
+  <ion-list *ngIf="dockerIOService.containers.length>0">
     <ion-item *ngFor="let container of dockerIOService.containers">
       <ion-label *ngFor="let name of container.Names">{{tools.cleanName(name)}}</ion-label>
       <ion-note slot="end">{{container.State}} {{container.Status}}</ion-note>

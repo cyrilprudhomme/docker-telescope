@@ -12,7 +12,7 @@
       <ion-title size="large">Images</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-list>
+  <ion-list *ngIf="dockerIOService.images.length>0">
     <ion-item *ngFor="let image of dockerIOService.images">
       <ion-label *ngIf="image.RepoTags">{{image.RepoTags[0]}}</ion-label>
       <ion-label *ngIf="!image.RepoTags">{{image.Id}}</ion-label>
