@@ -18,7 +18,7 @@ export class ImagesPage implements OnInit {
   ngOnInit(): void {
   }
 
-  setOpenImageDetails(isOpen: boolean) {
+  setOpenDetails(isOpen: boolean) {
     this.isModalDetailsOpen = isOpen;
   }
 

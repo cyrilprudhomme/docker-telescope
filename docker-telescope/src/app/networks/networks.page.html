@@ -16,7 +16,7 @@
     <ion-item *ngFor="let network of dockerIOService.networks">
       <ion-label>{{network.Name}}</ion-label>
       <ion-note slot="end">{{network.Scope}} {{network.Driver}}</ion-note>
-      <ion-button (click)="setOpenContainerDetails(true); this.itemSelected = network" slot="end">
+      <ion-button (click)="setOpenDetails(true); this.itemSelected = network" slot="end">
         <ion-icon name="information-circle-outline" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-item>
@@ -28,7 +28,7 @@
         <ion-toolbar>
           <ion-title>{{itemSelected.Name}}</ion-title>
           <ion-buttons slot="end">
-            <ion-button (click)="setOpenContainerDetails(false)">Close</ion-button>
+            <ion-button (click)="setOpenDetails(false)">Close</ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>

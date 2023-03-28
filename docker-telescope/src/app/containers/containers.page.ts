@@ -18,7 +18,7 @@ export class ContainersPage implements OnInit {
   ngOnInit(): void {
   }
 
-  setOpenContainerDetails(isOpen: boolean) {
+  setOpenDetails(isOpen: boolean) {
     this.isModalDetailsOpen = isOpen;
   }
 
