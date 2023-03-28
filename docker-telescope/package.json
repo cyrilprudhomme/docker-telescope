@@ -1,12 +1,14 @@
 {
   "name": "docker-telescope",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "docker-telescope",
+  "homepage": "https://cyril-prudhomme-dev.fr/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start_ionic": "ionic serve",
     "build": "ng build",
+    "build_ionic": "ionic build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint"
@@ -27,6 +29,7 @@
     "@ionic/angular": "^6.1.9",
     "ionicons": "^6.0.3",
     "rxjs": "~7.5.0",
+    "socket.io-client": "^4.6.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },

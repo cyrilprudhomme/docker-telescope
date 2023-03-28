@@ -6,7 +6,7 @@ import {io} from "socket.io-client";
 @Injectable({
   providedIn: 'root'
 })
-export class SocketIoService {
+export class DockerIOService {
   containers: ContainerInfo[] = []
   images: ImageInfo[] = []
   volumes = []
