@@ -16,18 +16,18 @@
     <ion-item *ngFor="let image of dockerIOService.images">
       <ion-label *ngIf="image.RepoTags">{{image.RepoTags[0]}}</ion-label>
       <ion-label *ngIf="!image.RepoTags">{{image.Id}}</ion-label>
-      <ion-button (click)="setOpenImageDetails(true); this.imageSelected = image" slot="end">
+      <ion-button (click)="setOpenImageDetails(true); this.itemSelected = image" slot="end">
         <ion-icon name="information-circle-outline" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-item>
   </ion-list>
 
-  <ion-modal [isOpen]="isModalImageDetailsOpen">
+  <ion-modal [isOpen]="isModalDetailsOpen">
     <ng-template>
       <ion-header>
         <ion-toolbar>
-          <ion-title *ngIf="imageSelected.RepoTags">{{imageSelected.RepoTags[0]}}</ion-title>
-          <ion-title *ngIf="!imageSelected.RepoTags">{{imageSelected.Id}}</ion-title>
+          <ion-title *ngIf="itemSelected.RepoTags">{{itemSelected.RepoTags[0]}}</ion-title>
+          <ion-title *ngIf="!itemSelected.RepoTags">{{itemSelected.Id}}</ion-title>
           <ion-buttons slot="end">
             <ion-button (click)="setOpenImageDetails(false)">Close</ion-button>
           </ion-buttons>
@@ -35,23 +35,23 @@
       </ion-header>
       <ion-content class="ion-padding">
         <ul>
-          <li>Id: {{imageSelected.Id}}</li>
-          <li>ParentId: {{imageSelected.ParentId}}</li>
+          <li>Id: {{itemSelected.Id}}</li>
+          <li>ParentId: {{itemSelected.ParentId}}</li>
           <li>RepoTags:
-            <ul *ngFor="let RepoTag of imageSelected.RepoTags">
+            <ul *ngFor="let RepoTag of itemSelected.RepoTags">
               <li>{{RepoTag}}</li>
             </ul>
           </li>
           <li>RepoDigest:
-            <ul *ngFor="let RepoDigest of imageSelected.RepoDigests">
+            <ul *ngFor="let RepoDigest of itemSelected.RepoDigests">
               <li>{{RepoDigest}}</li>
             </ul>
           </li>
-          <li>Created: {{imageSelected.Created}}</li>
-          <li>Size: {{imageSelected.Size}}</li>
-          <li>VirtualSize: {{imageSelected.VirtualSize}}</li>
-          <li>SharedSize: {{imageSelected.SharedSize}}</li>
-          <li>Containers: {{imageSelected.Containers}}</li>
+          <li>Created: {{itemSelected.Created}}</li>
+          <li>Size: {{itemSelected.Size}}</li>
+          <li>VirtualSize: {{itemSelected.VirtualSize}}</li>
+          <li>SharedSize: {{itemSelected.SharedSize}}</li>
+          <li>Containers: {{itemSelected.Containers}}</li>
         </ul>
       </ion-content>
     </ng-template>

@@ -1,0 +1,61 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Volumes
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Volumes</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-list>
+    <ion-item *ngFor="let volume of dockerIOService.volumes">
+      <ion-label>{{volume.Name}}</ion-label>
+      <ion-note slot="end">{{volume.Scope}} {{volume.Driver}}</ion-note>
+      <ion-button (click)="setOpenContainerDetails(true); this.itemSelected = volume" slot="end">
+        <ion-icon name="information-circle-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-modal [isOpen]="isModalDetailsOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>{{itemSelected.Name}}</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpenContainerDetails(false)">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ul>
+          <li>Name: {{itemSelected.Name}}</li>
+          <li>Driver: {{itemSelected.Driver}}</li>
+          <li>Mountpoint: {{itemSelected.Mountpoint}}</li>
+          <li>CreatedAt: {{itemSelected.CreatedAt}}</li>
+          <li>Status: {{itemSelected.Status}}</li>
+          <li>Labels: {{itemSelected.Labels}}</li>
+          <li>Scope: {{itemSelected.Scope}}</li>
+          <li>ClusterVolume: {{itemSelected.ClusterVolume}}</li>
+          <li>Options: {{itemSelected.Options}}</li>
+          <li>UsageData: {{itemSelected.UsageData}}</li>
+          <!--          <li>Ports:-->
+          <!--            <ul *ngFor="let port of itemSelected.Ports; index as i">-->
+          <!--              <li>IP: {{port.IP}}</li>-->
+          <!--              <li>PrivatePort: {{port.PrivatePort}}</li>-->
+          <!--              <li>PublicPort: {{port.PublicPort}}</li>-->
+          <!--              <li>Type: {{port.Type}}</li>-->
+          <!--              <br *ngIf="i<itemSelected.Ports.length">-->
+          <!--            </ul>-->
+          <!--          </li>-->
+
+        </ul>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>

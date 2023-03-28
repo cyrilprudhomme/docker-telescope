@@ -9,9 +9,8 @@ import {ToolsService} from "../services/tools.service";
   styleUrls: ['./containers.page.scss'],
 })
 export class ContainersPage implements OnInit {
-  isModalContainersDetailsOpen = false;
-  containerSelected!: ContainerInfo;
-
+  isModalDetailsOpen = false;
+  itemSelected!: ContainerInfo;
 
   constructor(public readonly dockerIOService: DockerIOService, public readonly tools: ToolsService) {
   }
@@ -20,7 +19,7 @@ export class ContainersPage implements OnInit {
   }
 
   setOpenContainerDetails(isOpen: boolean) {
-    this.isModalContainersDetailsOpen = isOpen;
+    this.isModalDetailsOpen = isOpen;
   }
 
 }

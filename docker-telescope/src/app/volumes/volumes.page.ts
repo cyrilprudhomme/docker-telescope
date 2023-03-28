@@ -1,16 +1,16 @@
 import {Component, OnInit} from '@angular/core';
-import {ImageInfo} from "../services/model";
+import {VolumesInfos} from "../services/model";
 import {DockerIOService} from "../services/docker-io.service";
 import {ToolsService} from "../services/tools.service";
 
 @Component({
-  selector: 'app-images',
-  templateUrl: './images.page.html',
-  styleUrls: ['./images.page.scss'],
+  selector: 'app-volumes',
+  templateUrl: './volumes.page.html',
+  styleUrls: ['./volumes.page.scss'],
 })
-export class ImagesPage implements OnInit {
+export class VolumesPage implements OnInit {
   isModalDetailsOpen = false;
-  itemSelected!: ImageInfo;
+  itemSelected!: VolumesInfos;
 
   constructor(public readonly dockerIOService: DockerIOService, public readonly tools: ToolsService) {
   }
@@ -18,7 +18,7 @@ export class ImagesPage implements OnInit {
   ngOnInit(): void {
   }
 
-  setOpenImageDetails(isOpen: boolean) {
+  setOpenContainerDetails(isOpen: boolean) {
     this.isModalDetailsOpen = isOpen;
   }
 

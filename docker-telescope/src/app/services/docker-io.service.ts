@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {ContainerInfo, ImageInfo} from "./model";
+import {ContainerInfo, ImageInfo, NetworksInfos, VolumesInfos} from "./model";
 import {environment} from "../../environments/environment";
 import {io} from "socket.io-client";
 
@@ -9,8 +9,8 @@ import {io} from "socket.io-client";
 export class DockerIOService {
   containers: ContainerInfo[] = []
   images: ImageInfo[] = []
-  volumes = []
-  networks = []
+  volumes: VolumesInfos[] = []
+  networks: NetworksInfos[] = []
   socket = io()
 
 

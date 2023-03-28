@@ -27,6 +27,14 @@ const routes: Routes = [
   {
     path: 'images',
     loadChildren: () => import('./images/images.module').then(m => m.ImagesPageModule)
+  },
+  {
+    path: 'volumes',
+    loadChildren: () => import('./volumes/volumes.module').then(m => m.VolumesPageModule)
+  },
+  {
+    path: 'networks',
+    loadChildren: () => import('./networks/networks.module').then(m => m.NetworksPageModule)
   }
 
 
