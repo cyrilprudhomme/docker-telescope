@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {DockerIOService} from "../services/docker-io.service";
+import {ToolsService} from "../services/tools.service";
 
 @Component({
   selector: 'app-administration',
@@ -7,10 +9,14 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AdministrationPage implements OnInit {
 
-  constructor() {
+  constructor(public readonly dockerIOService: DockerIOService, public readonly tools: ToolsService) {
   }
 
   ngOnInit() {
   }
 
+  cleanUnUsedElement() {
+    this.dockerIOService.cleanUnusedElement()
+    console.log('It\'s work')
+  }
 }

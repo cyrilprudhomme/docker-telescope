@@ -24,6 +24,11 @@
       <ion-button (click)="setOpenDetails(true); this.itemSelected = container" slot="end">
         <ion-icon name="information-circle-outline" slot="icon-only"></ion-icon>
       </ion-button>
+      <ion-button (click)="this.dockerIOService.optionContainerActionSheet(container); this.itemSelected = container"
+                  color="secondary"
+                  slot="end">
+        <ion-icon name="settings-outline" slot="icon-only"></ion-icon>
+      </ion-button>
     </ion-item>
   </ion-list>
   <ng-template #elseBlock>

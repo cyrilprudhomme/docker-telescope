@@ -1,6 +1,6 @@
 // Use Express
 var express = require("express");
-var path = require('path');
+var path = require("path");
 // Use body-parser
 var bodyParser = require("body-parser");
 // Use Cors
@@ -12,16 +12,16 @@ var corsOptions = {
 // Create new instance of the express server
 var app = express();
 // Create new instance of the Docker socket
-const Docker = require('dockerode');
-const docker = new Docker({socketPath: '/var/run/docker.sock'});
+const Docker = require("dockerode");
+const docker = new Docker({socketPath: "/var/run/docker.sock"});
 
 app.use(cors(corsOptions));
 
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname, 'www')));
-app.all('*', function (req, res) {
-    res.status(200).sendFile(`/`, {root: path.join(__dirname, 'www')});
+app.use(express.static(path.join(__dirname, "www")));
+app.all("*", function (req, res) {
+    res.status(200).sendFile(`/`, {root: path.join(__dirname, "www")});
 });
 
 // Init the server
@@ -34,34 +34,34 @@ var server = app.listen(process.env.PORT || 3000, function () {
  * Create websocket
  */
 const {Server} = require("socket.io");
-const io = new Server(server, {cors: {origin: '*'}});
-const tempo = 5000
+const io = new Server(server, {cors: {origin: "*"}});
+const tempo = 5000;
 io.on("connection", (socket) => {
     socket.on("metrics:list", () => {
         docker.listContainers(function (err, containers) {
             if (err) {
-                console.error(err);
+                socket.emit("error", err);
             } else {
                 socket.emit("containersList", containers);
             }
         });
         docker.listImages(function (err, images) {
             if (err) {
-                console.error(err);
+                socket.emit("error", err);
             } else {
                 socket.emit("imagesList", images);
             }
         });
         docker.listVolumes(function (err, volumes) {
             if (err) {
-                console.error(err);
+                socket.emit("error", err);
             } else {
                 socket.emit("volumesList", volumes);
             }
         });
         docker.listNetworks(function (err, networks) {
             if (err) {
-                console.error(err);
+                socket.emit("error", err);
             } else {
                 socket.emit("networksList", networks);
             }
@@ -70,57 +70,66 @@ io.on("connection", (socket) => {
         setInterval(() => {
             docker.listContainers(function (err, containers) {
                 if (err) {
-                    console.error(err);
+                    socket.emit("error", err);
                 } else {
                     socket.emit("containersList", containers);
                 }
             });
             docker.listImages(function (err, images) {
                 if (err) {
-                    console.error(err);
+                    socket.emit("error", err);
                 } else {
                     socket.emit("imagesList", images);
                 }
             });
             docker.listVolumes(function (err, volumes) {
                 if (err) {
-                    console.error(err);
+                    socket.emit("error", err);
                 } else {
                     socket.emit("volumesList", volumes);
                 }
             });
             docker.listNetworks(function (err, networks) {
                 if (err) {
-                    console.error(err);
+                    socket.emit("error", err);
                 } else {
                     socket.emit("networksList", networks);
                 }
             });
         }, tempo);
     });
-    socket.on("action:prune", async () => {
-        await docker.pruneContainers(function (err, response) {
+    socket.on("action:prune", () => {
+        docker.pruneImages(['dangling=false'], function (err, response) {
             if (err) {
-                console.error(err);
+                socket.emit("error", err);
             } else {
-                console.log(response)
+                socket.emit("response", response);
             }
-        })
-        await docker.pruneImages(function (err, response) {
+        });
+
+    });
+    socket.on("action:restart", (id) => {
+        const container = docker.getContainer(id)
+        container.restart(id, function (err, response) {
             if (err) {
-                console.error(err);
+                socket.emit("error", err.json.message);
             } else {
-                console.log(response)
+                socket.emit("response", response);
             }
-        })
-        await docker.pruneNetworks(function (err, response) {
+        });
+
+    });
+    socket.on("action:remove", (id) => {
+        const image = docker.getImage(id)
+        image.remove(id, function (err, response) {
             if (err) {
-                console.error(err);
+                socket.emit("error", err.json.message);
             } else {
-                console.log(response)
+                socket.emit("response", response);
             }
-        })
-    })
+        });
+
+    });
 });
 io.engine.on("connection_error", (err) => {
     console.log(err.req); // the request object
