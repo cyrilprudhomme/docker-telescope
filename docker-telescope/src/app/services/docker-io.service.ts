@@ -23,7 +23,7 @@ export class DockerIOService {
       this.toolsService.presentToast(arg, "danger", null)
     });
     this.socket.on("response", (arg) => {
-      this.toolsService.presentToast(arg, "danger", null)
+      this.toolsService.presentToast(arg, "success", null)
     });
     this.socket.on("containersList", (arg: ContainerInfo[]) => {
       this.containers = arg

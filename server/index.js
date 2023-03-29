@@ -114,7 +114,7 @@ io.on("connection", (socket) => {
             if (err) {
                 socket.emit("error", err.json.message);
             } else {
-                socket.emit("response", response);
+                socket.emit("response", "Containeur redémarré");
             }
         });
 
@@ -125,7 +125,7 @@ io.on("connection", (socket) => {
             if (err) {
                 socket.emit("error", err.json.message);
             } else {
-                socket.emit("response", response);
+                socket.emit("response", "Image Supprimée");
             }
         });
 
