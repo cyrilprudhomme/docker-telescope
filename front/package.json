@@ -1,8 +1,8 @@
 {
-  "name": "front",
+  "name": "docker-telescope",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "docker-telescope",
+  "homepage": "https://cyril-prudhomme-dev.fr/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

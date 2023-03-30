@@ -1,5 +1,5 @@
 {
-  "name": "front",
+  "name": "Docker-Telescope",
   "integrations": {
     "capacitor": {}
   },

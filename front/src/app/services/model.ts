@@ -67,3 +67,71 @@ export interface ImageInfo {
 export interface Config {
   Id: string,
 }
+
+export interface VolumesInfos {
+
+  Name: string,
+  Driver: string,
+  Mountpoint: string,
+  CreatedAt: string,
+  Status: {
+    "hello": string,
+  },
+  Labels: {
+    "com.example.some-label": string,
+    "com.example.some-other-label": string,
+  },
+  Scope: string,
+  ClusterVolume: {
+    ID: string,
+    Version: Array<{}>,
+    CreatedAt: string,
+    UpdatedAt: string,
+    Spec: Array<{}>,
+    Info: Array<{}>,
+    PublishStatus: Array<{}>,
+  },
+  Options: {
+    device: string,
+    o: string,
+    type: string,
+  },
+  UsageData: {
+    Size: number,
+    RefCount: number,
+  }
+}
+
+export interface NetworksInfos {
+  Name: string,
+  Id: string,
+  Created: string,
+  Scope: string,
+  Driver: string,
+  EnableIPv6: boolean,
+  IPAM: Array<{
+    Driver: string,
+    Config: Array<{
+      Subnet: string,
+      Gateway: string,
+    }>,
+    Options: Array<{
+      foo: string
+    }>,
+  }>
+  Internal: boolean,
+  Attachable: boolean,
+  Ingress: boolean,
+  "Containers": Array<{
+    label: Array<{
+      Name: string,
+      EndpointID: string,
+      MacAddress: string,
+      IPv4Address: string,
+      IPv6Address: string
+    }>
+  }>,
+  "Options": Array<{}>,
+  "Labels": Array<{}>
+
+}
