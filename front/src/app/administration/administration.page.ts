@@ -16,7 +16,7 @@ export class AdministrationPage implements OnInit {
   }
 
   cleanUnUsedElement() {
-    this.dockerIOService.cleanUnusedElement()
+    this.dockerIOService.cleanUnusedImage()
     console.log('It\'s work')
   }
 }

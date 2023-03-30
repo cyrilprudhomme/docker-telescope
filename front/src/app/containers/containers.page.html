@@ -19,15 +19,10 @@
   <ion-list *ngIf="dockerIOService.containers.length>0; else elseBlock">
     <ion-item *ngFor="let container of dockerIOService.containers">
       <ion-label *ngFor="let name of container.Names">{{tools.cleanName(name)}}</ion-label>
-
       <ion-note slot="end">{{container.State}} {{container.Status}}</ion-note>
-      <ion-button (click)="setOpenDetails(true); this.itemSelected = container" slot="end">
-        <ion-icon name="information-circle-outline" slot="icon-only"></ion-icon>
-      </ion-button>
-      <ion-button (click)="this.dockerIOService.optionContainerActionSheet(container); this.itemSelected = container"
-                  color="secondary"
-                  slot="end">
-        <ion-icon name="settings-outline" slot="icon-only"></ion-icon>
+      <ion-button (click)="this.optionActionSheet(container); this.itemSelected = container"
+                  color="medium" fill="clear" shape="round" slot="end">
+        <ion-icon name="ellipsis-vertical-outline" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-item>
   </ion-list>

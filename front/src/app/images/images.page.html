@@ -20,12 +20,9 @@
     <ion-item *ngFor="let image of dockerIOService.images">
       <ion-label *ngIf="image.RepoTags">{{image.RepoTags[0]}}</ion-label>
       <ion-label *ngIf="!image.RepoTags">{{image.Id}}</ion-label>
-      <ion-button (click)="setOpenDetails(true); this.itemSelected = image" slot="end">
-        <ion-icon name="information-circle-outline" slot="icon-only"></ion-icon>
-      </ion-button>
-      <ion-button (click)="this.dockerIOService.optionImagesActionSheet(image); this.itemSelected = image"
-                  color="secondary" slot="end">
-        <ion-icon name="settings-outline" slot="icon-only"></ion-icon>
+      <ion-button (click)="this.optionActionSheet(image); this.itemSelected = image"
+                  color="medium" fill="clear" shape="round" slot="end">
+        <ion-icon name="ellipsis-vertical-outline" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-item>
   </ion-list>

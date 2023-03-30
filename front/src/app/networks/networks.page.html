@@ -20,8 +20,9 @@
     <ion-item *ngFor="let network of dockerIOService.networks">
       <ion-label>{{network.Name}}</ion-label>
       <ion-note slot="end">{{network.Scope}} {{network.Driver}}</ion-note>
-      <ion-button (click)="setOpenDetails(true); this.itemSelected = network" slot="end">
-        <ion-icon name="information-circle-outline" slot="icon-only"></ion-icon>
+      <ion-button (click)="this.optionActionSheet(network); this.itemSelected = network"
+                  color="medium" fill="clear" shape="round" slot="end">
+        <ion-icon name="ellipsis-vertical-outline" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-item>
   </ion-list>

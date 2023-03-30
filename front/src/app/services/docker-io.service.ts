@@ -3,7 +3,6 @@ import {ContainerInfo, ImageInfo, NetworksInfos, VolumesInfos} from "./model";
 import {environment} from "../../environments/environment";
 import {io} from "socket.io-client";
 import {ToolsService} from "./tools.service";
-import {ActionSheetController} from "@ionic/angular";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +14,7 @@ export class DockerIOService {
   networks: NetworksInfos[] = []
   socket = io()
 
-  constructor(private toolsService: ToolsService, private actionSheetCtrl: ActionSheetController,) {
+  constructor(private toolsService: ToolsService) {
     if (!environment.production) {
       this.socket = io("http://ucf-ljenias101.siu.central:3000")
     }
@@ -44,90 +43,9 @@ export class DockerIOService {
     this.socket.emit("metrics:list");
   }
 
-  cleanUnusedElement() {
-    this.socket.emit("action:pruneimage");
+  cleanUnusedImage() {
+    this.socket.emit("image:remove");
   }
 
-  async optionContainerActionSheet(container: ContainerInfo) {
-    // this.dockerIOService.socket.emit('action:restart',container.Id)
-    const actionSheet = await this.actionSheetCtrl.create({
-      header: 'Options',
-      // subHeader: 'Example subheader',
-      buttons: [
-        // {
-        //   text: 'Delete',
-        //   role: 'destructive',
-        //   data: {
-        //     action: 'delete',
-        //   },
-        // },
-        {
-          text: 'Restart',
-          data: {
-            action: 'restart',
-          },
-        },
-        {
-          text: 'Annuler',
-          role: 'cancel',
-          data: {
-            action: 'cancel',
-          },
-        },
-      ],
-    });
 
-    await actionSheet.present();
-
-    const result = await actionSheet.onDidDismiss();
-    switch (result.data.action) {
-      case 'restart':
-        this.socket.emit('action:restart', container.Id)
-        break
-      case 'restart':
-        this.socket.emit('action:remove', container.ImageID)
-        break
-    }
-    console.log(JSON.stringify(result, null, 2))
-  }
-
-  async optionImagesActionSheet(image: ImageInfo) {
-    const actionSheet = await this.actionSheetCtrl.create({
-      header: 'Options',
-      // subHeader: 'Example subheader',
-      buttons: [
-        // {
-        //   text: 'Delete',
-        //   role: 'destructive',
-        //   data: {
-        //     action: 'delete',
-        //   },
-        // },
-        {
-          text: 'Delete',
-          role: 'destructive',
-          data: {
-            action: 'delete',
-          },
-        },
-        {
-          text: 'Annuler',
-          role: 'cancel',
-          data: {
-            action: 'cancel',
-          },
-        },
-      ],
-    });
-
-    await actionSheet.present();
-
-    const result = await actionSheet.onDidDismiss();
-    switch (result.data.action) {
-      case 'delete':
-        this.socket.emit('action:remove', image.Id)
-        break
-    }
-    console.log(JSON.stringify(result, null, 2))
-  }
 }

@@ -20,8 +20,9 @@
     <ion-item *ngFor="let volume of dockerIOService.volumes">
       <ion-label>{{volume.Name}}</ion-label>
       <ion-note slot="end">{{volume.Scope}} {{volume.Driver}}</ion-note>
-      <ion-button (click)="setOpenDetails(true); this.itemSelected = volume" slot="end">
-        <ion-icon name="information-circle-outline" slot="icon-only"></ion-icon>
+      <ion-button (click)="this.optionActionSheet(volume); this.itemSelected = volume"
+                  color="medium" fill="clear" shape="round" slot="end">
+        <ion-icon name="ellipsis-vertical-outline" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-item>
   </ion-list>

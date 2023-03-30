@@ -114,17 +114,43 @@ io.on("connection", (socket) => {
             if (err) {
                 socket.emit("error", err.json.message);
             } else {
+                console.log(response)
                 socket.emit("response", "Containeur redémarré");
             }
         });
 
     });
-    socket.on("action:remove", (id) => {
+    socket.on("image:remove", (id) => {
         const image = docker.getImage(id)
         image.remove(id, function (err, response) {
             if (err) {
                 socket.emit("error", err.json.message);
             } else {
+                console.log(response)
+                socket.emit("response", "Image Supprimée");
+            }
+        });
+
+    });
+    socket.on("volume:remove", (id) => {
+        const volume = docker.getVolume(id)
+        volume.remove(id, function (err, response) {
+            if (err) {
+                socket.emit("error", err.json.message);
+            } else {
+                console.log(response)
+                socket.emit("response", "Image Supprimée");
+            }
+        });
+
+    });
+    socket.on("network:remove", (id) => {
+        const network = docker.getNetwork(id)
+        network.remove(id, function (err, response) {
+            if (err) {
+                socket.emit("error", err.json.message);
+            } else {
+                console.log(response)
                 socket.emit("response", "Image Supprimée");
             }
         });
