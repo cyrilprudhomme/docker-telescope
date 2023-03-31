@@ -6,3 +6,8 @@ div {
 ion-text h1 {
   font-size: xx-large;
 }
+
+ion-text a:link, ion-text a:visited, ion-text a:hover, ion-text a:active, ion-text a {
+  color: white;
+  text-decoration: none;
+}
