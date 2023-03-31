@@ -15,6 +15,7 @@ export class AppComponent {
   ];
   public labels = [
     {title: 'Administration', url: 'administration', icon: 'construct'},
+    {title: 'A Propos', url: 'about', icon: 'information-outline'},
   ];
 
   constructor() {
