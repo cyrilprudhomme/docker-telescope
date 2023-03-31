@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@ionic/angular": "^7.0.0",
-    "rxjs": "^7.5.0"
-  }
-}
